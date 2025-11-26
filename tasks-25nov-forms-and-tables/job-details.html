@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <main>
+    <h1 align="center">Job Details:</h1>
+
+    <hr />
+
+    <form>
+      <table border="1px" bordercolor="#eee" cellpadding="12" align="center">
+        <tr>
+          <td align="right">Job Title:</td>
+          <td><input type="text" name="jobTitle" /></td>
+        </tr>
+        <tr>
+          <td align="right">Description:</td>
+          <td>
+            <textarea name="description" rows="3"></textarea>
+            <br />
+            <br />
+            <span>Brief Description should have atmost 500 characters</span>
+          </td>
+        </tr>
+        <tr>
+          <td align="right">Company Name:</td>
+          <td><input type="text" name="companyName" /></td>
+        </tr>
+        <tr>
+          <td align="right">Company Number:</td>
+          <td><input type="text" name="companyNumber" /></td>
+        </tr>
+        <tr>
+          <td align="right">Company Person:</td>
+          <td><input type="text" name="companyPerson" /></td>
+        </tr>
+        <tr>
+          <td align="right">Email:</td>
+          <td><input type="email" name="email" /></td>
+        </tr>
+        <tr>
+          <td align="right">Work Status:</td>
+          <td>
+            <input id="fullTime" type="checkbox" name="fullTime" />
+            <label for="fullTime">Full Time</label>
+
+            <input id="partTime" type="checkbox" name="partTime" />
+            <label for="partTime">Part Time</label>
+
+            <input id="perDim" type="checkbox" name="perDim" />
+            <label for="perDim">Part Time</label>
+
+            <input id="others" type="checkbox" name="others" />
+            <label for="others">Others</label>
+          </td>
+        <tr>
+          <td align="right">Salary:</td>
+          <td>
+            <input type="text" name="salary" />
+
+            <select name="salaryIn">
+              <option value="USD">US Dollar</option>
+              <option value="INR">Indian Rupee</option>
+            </select>
+
+            <select name="salaryFrequency">
+              <option value="YEARLY">Yearly</option>
+              <option value="MONTHLY">Monthly</option>
+              <option value="WEEKLY">Weekly</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td align="right">Experience (Years):</td>
+          <td><input type="text" name="experience" /></td>
+        </tr>
+        <tr>
+          <td align="right">Location:</td>
+          <td><input type="text" name="experience" /></td>
+        </tr>
+        <tr>
+          <td align="right">Qualifications:</td>
+          <td>
+            <select size="4">
+              <option value="Any">Any</option>
+              <option value="High School">High School</option>
+              <option value="Associate">Associate</option>
+              <option value="Pre Bachelors">Pre Bachelors</option>
+            </select>
+            <button>Add &gt;&gt;</button>
+            <button>
+              &lt;&lt; Remove</button>
+            <select name="salaryFrequency" size="4">
+              <option value="Any">Any</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td align="right"><button type="submit">Submit</button></td>
+          <td><button type="reset">Reset</button></td>
+        </tr>
+      </table>
+    </form>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <table bgcolor="#6b5bcb" style="color: white;" cellpadding="12" align="center">
+    <tbody>
+      <tr>
+        <td>FIRST NAME</td>
+        <td><input type="text" name="firstName" /> <span>(max 30 characters a-z and A-Z)</span></td>
+      </tr>
+      <tr>
+        <td>LAST NAME</td>
+        <td><input type="text" name="lastName" /> <span>(max 30 characters a-z and A-Z)</span></td>
+      </tr>
+      <tr>
+        <td>DATE OF BIRTH</td>
+        <td>
+          <select>
+            <option value="Day">Day</option>
+          </select>
+          <select>
+            <option value="Month">Month</option>
+          </select>
+          <select>
+            <option value="Year">Year</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>EMAIL ID</td>
+        <td><input type="email" name="emailId" /></td>
+      </tr>
+      <tr>
+        <td>MOBILE NUMBER</td>
+        <td><input type="text" name="mobileNumber" /></td>
+      </tr>
+      <tr>
+        <td>GENDER</td>
+        <td>
+          <input type="radio" name="gender" value="male" id="genderMale" /><label for="genderMale">Male</label>
+          <input type="radio" name="gender" value="female" id="genderFemale" /><label for="genderFemale">Female</label>
+          <input type="radio" name="gender" value="other" id="genderOther" /><label for="genderOther">Other</label>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top">ADDRESS</td>
+        <td>
+          <textarea cols="30" rows="4" name="address"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td>CITY</td>
+        <td><input type="text" name="city" /> <span>(max 30 characters a-z and A-Z)</span></td>
+      </tr>
+      <tr>
+        <td>PIN CODE</td>
+        <td><input type="number" name="pinCode" /> <span>(6 digit number)</span></td>
+      </tr>
+      <tr>
+        <td>STATE</td>
+        <td><input type="text" name="state" /> <span>(max 30 characters a-z and A-Z)</span></td>
+      </tr>
+      <tr>
+        <td>COUNTRY</td>
+        <td><input type="text" name="country" value="India" /></td>
+      </tr>
+      <tr>
+        <td valign="top">HOBBIES</td>
+        <td>
+          <label for="hobby[drawing]">Drawing</label><input type="checkbox" name="hobby[drawing]" value="male"
+            id="hobby[drawing]" />
+          <label for="hobby[singing]">Singing</label><input type="checkbox" name="hobby[singing]" value="female"
+            id="hobby[singing]" />
+          <label for="hobby[dancing]">Dancing</label><input type="checkbox" name="hobby[dancing]" value="other"
+            id="hobby[dancing]" />
+          <label for="hobby[sketching]">Sketching</label><input type="checkbox" name="hobby[sketching]" value="other"
+            id="hobby[sketching]" />
+          <br />
+          <label for="hobby[others]">Others</label><input type="checkbox" name="hobby[others]" value="other"
+            id="hobby[others]" />
+          <input type="text" name="otherHobbies" />
+        </td>
+      </tr>
+      <tr>
+        <td valign="top">QUALIFICATIONS</td>
+        <td>
+          <table>
+            <thead>
+              <tr>
+                <th>Sl. No.</th>
+                <th>Examination</th>
+                <th>Board</th>
+                <th>Percentage</th>
+                <th>Year of Passing</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Class X</td>
+                <td><input type="text" name="qualifications[0][board]" /></td>
+                <td><input type="text" name="qualifications[0][percentage]" /></td>
+                <td><input type="text" name="qualifications[0][yearOfPassing]" /></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Class XII</td>
+                <td><input type="text" name="qualifications[1][board]" /></td>
+                <td><input type="text" name="qualifications[1][percentage]" /></td>
+                <td><input type="text" name="qualifications[1][yearOfPassing]" /></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Graduation</td>
+                <td><input type="text" name="qualifications[2][board]" /></td>
+                <td><input type="text" name="qualifications[2][percentage]" /></td>
+                <td><input type="text" name="qualifications[2][yearOfPassing]" /></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Masters</td>
+                <td><input type="text" name="qualifications[3][board]" /></td>
+                <td><input type="text" name="qualifications[3][percentage]" /></td>
+                <td><input type="text" name="qualifications[3][yearOfPassing]" /></td>
+              </tr>
+
+              <tr>
+                <td colspan="2"></td>
+                <td align="center">(10 char max)</td>
+                <td align="center">(upto 2 decimal)</td>
+              </tr>
+            </thead>
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <td valign="top">COURSES <br />APPLIED FOR</td>
+        <td>
+          <label for="courseAppliedFor[bca]">BCA</label><input type="radio" name="courseAppliedFor" value="BCA"
+            id="courseAppliedFor[bca]" />
+          <label for="courseAppliedFor[bcom]">B. Com.</label><input type="radio" name="courseAppliedFor" value="B. Com."
+            id="courseAppliedFor[bcom]" />
+          <label for="courseAppliedFor[bsc]">B. Sc.</label><input type="radio" name="courseAppliedFor" value="B. Sc."
+            id="courseAppliedFor[bsc]" />
+          <label for="courseAppliedFor[ba]">B. A.</label><input type="radio" name="courseAppliedFor" value="B. A."
+            id="courseAppliedFor[ba]" />
+        </td>
+      </tr>
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <td colspan="2" align="center">
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</body>
+
+</html>
