@@ -37,14 +37,14 @@
       class="bg-[url('./assets/images/creative-background-poster.jpg')] bg-cover p-16 flex flex-col text-white items-center">
 
       <div class="w-full max-w-5xl flex flex-col">
-        <div class="flex gap-8">
+        <div class="flex flex-col md:flex-row gap-8">
           <div class="flex-[1.5]">
             <p class="tracking-widest text-lg font-thin">CREATIVE DESIGN AGENCY</p>
             <h2 class="mt-8 text-5xl">We live to turn great ideas</h2>
 
             <p class="mt-12 tracking-widest text-lg font-thin">Image from <u>Freepik</u></p>
 
-            <div class="mt-64 flex gap-4 text-lg">
+            <div class="mt-36 flex gap-4 text-lg">
               <i class="fa-brands fa-facebook-f"></i>
               <i class="fa-brands fa-twitter"></i>
               <i class="fa-brands fa-instagram"></i>
@@ -78,21 +78,27 @@
           text.</p>
       </div>
       <div class="w-full max-w-5xl my-8">
-        <div class="grid grid-cols-4 grid-rows-2 gap-4">
-          <div style="grid-row: 1 / span 2; grid-column: 1 / span 2;">
+        <div class="flex flex-col md:flex-row items-center gap-4 px-4">
+          <div>
             <img width="512px" height="512px" src="./assets/images/web-guy.jpg" />
           </div>
-          <div class="text-lg flex flex-col items-center justify-center bg-pink-600 text-white">
-            DEVELOPMENT
-          </div>
-          <div class="text-lg flex flex-col items-center justify-center bg-gray-300">
-            TOP SKILLS
-          </div>
-          <div class="text-lg flex flex-col items-center justify-center bg-gray-300">
-            DESIGN
-          </div>
-          <div class="text-lg flex flex-col items-center justify-center bg-blue-700 text-white">
-            RESPONSIVE
+          <div class="grid grid-cols-2 grid-rows-2 gap-4">
+            <div class="text-lg flex flex-col items-center justify-center bg-pink-600 text-white p-8">
+              <span class="text-5xl"><i class="fa-solid fa-laptop-code"></i></span>
+              <h4 class="mt-4">DEVELOPMENT</h4>
+            </div>
+            <div class="text-lg flex flex-col items-center justify-center bg-gray-300 p-8">
+              <span class="text-5xl text-blue-800"><i class="fa-solid fa-briefcase"></i></span>
+              <h4 class="mt-4">TOP SKILLS</h4>
+            </div>
+            <div class="text-lg flex flex-col items-center justify-center bg-gray-300 p-8">
+              <span class="text-5xl text-blue-800"><i class="fa-solid fa-compass-drafting"></i></span>
+              <h4 class="mt-4">DESIGN</h4>
+            </div>
+            <div class="text-lg flex flex-col items-center justify-center bg-blue-700 text-white p-8">
+              <span class="text-5xl"><i class="fa-solid fa-laptop-file"></i></span>
+              <h4 class="mt-4">RESPONSIVE</h4>
+            </div>
           </div>
         </div>
 
@@ -118,18 +124,21 @@
       </div>
     </div>
 
-    <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center p-8">
       <div class="w-full max-w-6xl isolate relative">
-        <img src="./assets/images/creative-design-perfection.jpg" class="w-[695px] mt-[166px] mr-auto" alt="">
-
-        <div
-          class="w-60 h-60 rounded-full bg-[linear-gradient(#e84a90,#545af8)] mt-[-545px] mr-[250px] ml-auto relative z-10">
+        <div>
+          <img src="./assets/images/creative-design-perfection.jpg"
+            class="w-full md:w-[523px] lg:w-[695px] mt-[64px] lg:mt-[166px] mr-auto" alt="">
         </div>
 
-        <div class="relative z-20 mt-[-124px] mr-[0px] mb-[60px] w-[385px] ml-auto bg-gray-200 p-8">
+        <div
+          class="w-60 h-60 rounded-full bg-[linear-gradient(#e84a90,#545af8)] lg:mt-[-545px] mt-[-38px] mr-[250px] ml-auto relative z-10">
+        </div>
+
+        <div class="relative z-20 mt-[-124px] mr-[0px] mb-[60px] max-w-[385px] ml-auto bg-gray-200 p-8">
           <h3 class="text-3xl">Design Perfection</h3>
 
-          <p class="mt-4 font-light text-xl">We’re a small creative design studio based in New York, working with
+          <p class="mt-4 font-light text-xl">We're a small creative design studio based in New York, working with
             adventurous
             clients and
             providing
@@ -143,82 +152,92 @@
     </div>
 
     <div class="bg-[linear-gradient(#545af8,#e84a90)] flex flex-col items-center">
-      <div class="w-full max-w-6xl flex py-16 gap-4 items-start justify-center flex-wrap">
-        <div class="mt-48 w-48 bg-white flex flex-col items-center p-4">
-          <div class=" text-red-500">
-            <h3 class="my-4 text-xl">STRATEGY</h3>
+      <div class="w-full max-w-6xl flex py-16 items-start px-8 md:justify-center flex-wrap">
+        <div class="basis-1/2 lg:basis-auto lg:mt-48 lg:w-48 p-2">
+          <div class="bg-white flex flex-col items-center p-4">
+            <div class=" text-red-500">
+              <h3 class="my-4 text-xl">STRATEGY</h3>
+            </div>
+            <p class="text-center font-extralight text-lg tracking-wider"><em>Duis aute irure dolor in reprehenderit in
+                voluptate velit esse
+                cillum
+                dolore eu
+                fugiat nulla
+                pariatur</em></p>
+
+            <a href="#" class="pb-1 border-b border-black tracking-widest mt-4">MORE</a>
           </div>
-
-          <p class="text-center font-extralight text-lg tracking-wider"><em>Duis aute irure dolor in reprehenderit in
-              voluptate velit esse
-              cillum
-              dolore eu
-              fugiat nulla
-              pariatur</em></p>
-
-          <a href="#" class="pb-1 border-b border-black tracking-widest mt-4">MORE</a>
         </div>
-        <div class="w-48 bg-white flex flex-col items-center p-4">
-          <div class=" text-indigo-600">
-            <h3 class="my-4 text-xl">RESULTS</h3>
+        <div class="basis-1/2 lg:basis-auto lg:w-48 p-2">
+          <div class="bg-white flex flex-col items-center p-4">
+            <div class=" text-indigo-600">
+              <h3 class="my-4 text-xl">RESULTS</h3>
+            </div>
+
+            <p class="text-center font-extralight text-lg tracking-wider"><em>Duis aute irure dolor in reprehenderit in
+                voluptate velit esse
+                cillum
+                dolore eu
+                fugiat nulla
+                pariatur</em></p>
+
+            <a href="#" class="pb-1 border-b border-black tracking-widest mt-4">MORE</a>
           </div>
-
-          <p class="text-center font-extralight text-lg tracking-wider"><em>Duis aute irure dolor in reprehenderit in
-              voluptate velit esse
-              cillum
-              dolore eu
-              fugiat nulla
-              pariatur</em></p>
-
-          <a href="#" class="pb-1 border-b border-black tracking-widest mt-4">MORE</a>
         </div>
-        <div class="mt-48 w-48 bg-white flex flex-col items-center p-4">
-          <div class=" text-red-500">
-            <h3 class="my-4 text-xl">Expertise</h3>
+        <div class="basis-1/2 lg:basis-auto lg:mt-48 lg:w-48 p-2">
+          <div class="bg-white flex flex-col items-center p-4">
+            <div class=" text-red-500">
+              <h3 class="my-4 text-xl">Expertise</h3>
+            </div>
+
+            <p class="text-center font-extralight text-lg tracking-wider"><em>Duis aute irure dolor in reprehenderit in
+                voluptate velit esse
+                cillum
+                dolore eu
+                fugiat nulla
+                pariatur</em></p>
+
+            <a href="#" class="pb-1 border-b border-black tracking-widest mt-4">MORE</a>
           </div>
-
-          <p class="text-center font-extralight text-lg tracking-wider"><em>Duis aute irure dolor in reprehenderit in
-              voluptate velit esse
-              cillum
-              dolore eu
-              fugiat nulla
-              pariatur</em></p>
-
-          <a href="#" class="pb-1 border-b border-black tracking-widest mt-4">MORE</a>
         </div>
-        <div class="w-48 bg-white flex flex-col items-center p-4">
-          <div class=" text-indigo-600">
-            <h3 class="my-4 text-xl">Awards</h3>
+
+        <div class="basis-1/2 lg:basis-auto lg:w-48 p-2">
+          <div class=" bg-white flex flex-col items-center p-4">
+            <div class=" text-indigo-600">
+              <h3 class="my-4 text-xl">Awards</h3>
+            </div>
+
+            <p class="text-center font-extralight text-lg tracking-wider"><em>Duis aute irure dolor in reprehenderit in
+                voluptate velit esse
+                cillum
+                dolore eu
+                fugiat nulla
+                pariatur</em></p>
+
+            <a href="#" class="pb-1 border-b border-black tracking-widest mt-4">MORE</a>
           </div>
-
-          <p class="text-center font-extralight text-lg tracking-wider"><em>Duis aute irure dolor in reprehenderit in
-              voluptate velit esse
-              cillum
-              dolore eu
-              fugiat nulla
-              pariatur</em></p>
-
-          <a href="#" class="pb-1 border-b border-black tracking-widest mt-4">MORE</a>
         </div>
-        <div class="mt-48 w-48 bg-white flex flex-col items-center p-4">
-          <div class=" text-red-500">
-            <h3 class="my-4 text-xl">Support</h3>
+        <div class="basis-full lg:basis-auto lg:mt-48 lg:w-48 p-2">
+          <div class="bg-white flex flex-col items-center p-4">
+            <div class=" text-red-500">
+              <h3 class="my-4 text-xl">Support</h3>
+            </div>
+
+            <p class="text-center font-extralight text-lg tracking-wider"><em>Duis aute irure dolor in reprehenderit in
+                voluptate velit esse
+                cillum
+                dolore eu
+                fugiat nulla
+                pariatur</em></p>
+
+            <a href="#" class="pb-1 border-b border-black tracking-widest mt-4">MORE</a>
           </div>
-
-          <p class="text-center font-extralight text-lg tracking-wider"><em>Duis aute irure dolor in reprehenderit in
-              voluptate velit esse
-              cillum
-              dolore eu
-              fugiat nulla
-              pariatur</em></p>
-
-          <a href="#" class="pb-1 border-b border-black tracking-widest mt-4">MORE</a>
         </div>
       </div>
     </div>
 
     <div class="bg-gray-200 flex flex-col items-center">
-      <div class="w-full max-w-6xl flex py-40">
+      <div class="w-full max-w-6xl flex flex-col md:flex-row md:py-40 px-12">
         <div class="flex-1">
           <img class="mt-24" src="./assets/images/person-1.jpg" alt="">
         </div>
@@ -231,10 +250,9 @@
               business and brand to
               take action.
             </p>
-
             <p class="my-4 font-light text-lg">Image from <u>Freepik</u></p>
           </div>
-          <img class="w-full max-h-96 object-cover object-top" src="./assets/images/person-2.jpg" />
+          <img class="w-full max-h-[30rem] object-cover object-top" src="./assets/images/person-2.jpg" />
         </div>
         <div class="flex-1">
           <img class="-mt-24" src="./assets/images/person-3.jpg" alt="">
@@ -245,14 +263,15 @@
         </div>
       </div>
 
-      <div class="w-full max-w-3xl flex py-20 pb-40 relative isolate">
-        <div class="z-0 absolute -right-8 top-4 bottom-48 left-8 bg-[linear-gradient(#545af8,#e84a90)]">
+      <div class="w-full max-w-3xl flex px-20 py-20 pb-40 relative isolate">
+        <div
+          class="z-0 absolute right right-8 lg:-right-8 top-4 bottom-48 left-8 bg-[linear-gradient(#545af8,#e84a90)]">
         </div>
-        <div class="z-0 absolute top-56 right-60 bottom-24 -left-8 bg-[#e84a90]">
+        <div class="z-0 absolute top-56 right-60 bottom-24 -left-4 lg:-left-8 bg-[#e84a90]">
         </div>
         <div class="relative z-10 flex bg-white w-full p-8">
-          <div class="flex-[1.5]">
-            <img class="max-w-96" src="./assets/images/creative-digital-marketing.jpg" />
+          <div class="flex-[1]">
+            <img class="w-full max-w-96" src="./assets/images/creative-digital-marketing.jpg" />
           </div>
 
           <div class="flex-[1]">
@@ -274,12 +293,12 @@
 
     <div class="min-h-[100vh] 3xl:min-h-[70vh]">
       <div class="relative py-20 bg-white max-w-5xl mx-auto">
-        <div class="absolute top-10 left-1/2 -translate-x-1/2 w-3/5 bottom-0 
+        <div class="absolute top-10 left-1/2 -translate-x-1/2 w-3/5 bottom-1/4 
               bg-gradient-to-b from-indigo-500 to-purple-500 opacity-90">
         </div>
 
         <div class="relative max-w-6xl mx-auto gap-6 px-6">
-          <div class="grid grid-cols-3 gap-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             <img src="./assets/images/portfolio-1.jpg" class="w-full h-48 object-cover shadow" alt="">
             <img src="./assets/images/portfolio-2.jpg" class="w-full h-48 object-cover shadow" alt="">
             <img src="./assets/images/portfolio-3.jpg" class="w-full h-48 object-cover shadow" alt="">
@@ -289,7 +308,7 @@
             <img src="./assets/images/portfolio-6.jpg" class="w-full h-48 object-cover shadow" alt="">
           </div>
 
-          <div class="bg-white p-8 shadow-lg absolute top-96 left-[50%] lg:left[65%] lg:-right-16">
+          <div class="bg-white p-8 shadow-lg md:ml-auto mt-12 sm:mt-[-48px] max-w-[470px] relative z-10">
             <h2 class="text-5xl font-bold mb-4">Our Portfolio</h2>
 
             <p class="text-gray-600 mb-6">
