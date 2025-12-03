@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function printFruits(fruits) {
+      for (let i = 0; i < fruits.length; ++i) {
+        const itemNumber = i + 1;
+        const fruitName = fruits[i];
+
+        console.log(`${itemNumber}. ${fruitName}`);
+      }
+    }
+
+    const fruitNames = ["Apple", "Banana", "Orange"];
+    printFruits(fruitNames);
+  </script>
+</body>
+
+</html>
