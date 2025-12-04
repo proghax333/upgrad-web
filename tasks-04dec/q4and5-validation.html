@@ -75,6 +75,7 @@
       let email = emailElement.value;
 
       username = username.trim();
+      email = email.trim();
 
       if (!username) {
         errors.push({
@@ -87,6 +88,13 @@
         errors.push({
           field: emailElement,
           message: "Email should not be empty."
+        });
+      }
+
+      if (!isValidEmail(email)) {
+        errors.push({
+          field: emailElement,
+          message: "Email should be a valid email address."
         });
       }
 
