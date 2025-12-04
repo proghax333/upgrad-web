@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <main>
+    <div class="flex gap-4 items-center">
+      <button class="border p-2 px-4" id="btn-decrement">-</button>
+      <p id="counter">0</p>
+      <button class="border p-2 px-4" id="btn-increment">+</button>
+    </div>
+  </main>
+
+  <script>
+    const btnDecrement = document.querySelector("#btn-decrement");
+    const btnIncrement = document.querySelector("#btn-increment");
+
+    let count = 0;
+    const counter = document.querySelector("#counter");
+
+    btnDecrement.addEventListener("click", () => {
+      --count;
+      updateUI();
+    });
+
+    btnIncrement.addEventListener("click", () => {
+      ++count;
+      updateUI();
+    });
+
+    function updateUI() {
+      counter.innerText = count;
+    }
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <main class="flex flex-col">
+    <div class="w-full max-w-lg mx-auto">
+      <form id="registrationForm" class="flex flex-col my-12 border p-8 shadow-sm rounded-lg">
+        <h2 class="text-center text-3xl font-bold">Create Account</h2>
+
+        <h3 id="registrationStatus" class="mt-4 py-2 text-center font-bold bg-green-500 text-white hidden">Registered
+          successfully</h3>
+        <div class="flex flex-col mt-4">
+          <label>Username</label>
+          <input type="text" id="username" name="username" placeholder="John Doe"
+            class="mt-2 p-2 px-4 border rounded-md" />
+          <p id="username-error" class="text-sm hidden">Error message</p>
+        </div>
+
+        <div class="flex flex-col gap-2 mt-4">
+          <label>Email</label>
+          <input type="text" id="email" name="email" placeholder="mail@somemail.com"
+            class="p-2 px-4 border rounded-md" />
+          <p id="email-error" class="text-sm hidden">Error message</p>
+        </div>
+
+        <button type="submit" class="p-2 px-4 bg-indigo-800 text-white font-semibold mt-8 rounded-lg">Register</button>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    const usernameElement = document.querySelector("#username");
+    const emailElement = document.querySelector("#email");
+    const registrationForm = document.querySelector("#registrationForm");
+    const registrationStatus = document.querySelector("#registrationStatus");
+
+    usernameElement.addEventListener("change", (e) => {
+      validateFields();
+    });
+
+    emailElement.addEventListener("change", (e) => {
+      validateFields();
+    });
+
+    registrationForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const errors = validateFields();
+      if (errors.length === 0) {
+        registrationStatus.classList.remove("hidden");
+      } else {
+        registrationStatus.classList.add("hidden");
+      }
+    });
+
+    function isValidEmail(email) {
+      if (typeof email !== 'string') return false;
+      // Practical regex: allows common local-part chars, domains with dots, TLD >= 2 letters
+      const re = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+      return re.test(email.trim());
+    }
+
+    function validateFields() {
+      const errors = [];
+
+      let username = usernameElement.value;
+      let email = emailElement.value;
+
+      username = username.trim();
+
+      if (!username) {
+        errors.push({
+          field: usernameElement,
+          message: "Username should not be empty."
+        });
+      }
+
+      if (!email) {
+        errors.push({
+          field: emailElement,
+          message: "Email should not be empty."
+        });
+      }
+
+      for (const e of [usernameElement, emailElement]) {
+        e.classList.remove("border-red-600");
+        const errorView = getErrorView(e);
+
+        if (errorView) {
+          errorView.classList.add("hidden");
+        }
+      }
+
+      for (const error of errors) {
+        const { field, message } = error;
+        const errorView = getErrorView(field);
+
+        field.classList.add("border-red-600");
+
+        if (errorView) {
+          errorView.innerText = message;
+          errorView.classList.remove("hidden");
+        }
+      }
+
+      return errors;
+    }
+
+    function getErrorView(field) {
+      const view = document.getElementById(`${field.id}-error`);
+      return view;
+    }
+  </script>
+</body>
+
+</html>
