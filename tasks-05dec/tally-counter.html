@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function createTallyCounter() {
+      let count = 0;
+
+      return {
+        increment: () => {
+          ++count;
+          return count;
+        },
+
+        decrement: () => {
+          if (count <= 0) {
+            count = 0;
+            return count;
+          }
+
+          --count;
+          return count;
+        },
+      };
+    }
+
+
+    document.writeln("<br>First counter<br>")
+    const counter1 = createTallyCounter();
+
+    document.writeln(counter1.increment());
+    document.writeln(counter1.increment());
+    document.writeln(counter1.decrement());
+
+    document.writeln("<br>Second counter<br>")
+
+    const counter2 = createTallyCounter();
+    document.writeln(counter2.decrement());
+    document.writeln(counter2.decrement());
+    document.writeln(counter2.decrement());
+    document.writeln(counter2.increment());
+    document.writeln(counter2.increment());
+  </script>
+</body>
+
+</html>
