@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+  <main class="flex flex-col">
+    <section class="w-full max-w-lg mx-auto">
+      <form id="formLoanCalculator" class=" p-4 m-4 shadow-sm border">
+        <h2 class="text-center font-bold text-3xl my-4">Loan calculator</h2>
+
+        <div class="flex flex-row items-center p-2 gap-4">
+          <label for="loanAmount">Loan Amount: </label>
+          <input type="number" id="loanAmount" placeholder="Ex. 100000" class="p-1 px-4 border flex-1" />
+        </div>
+
+        <div class="flex flex-row items-center p-2 gap-4">
+          <label for="annualInterestRate">Annual interest rate: </label>
+          <input type="number" id="annualInterestRate" placeholder="Ex. 5% per annum" class="p-1 px-4 border flex-1" />
+        </div>
+
+        <div class="flex flex-row items-center p-2 gap-4">
+          <label for="loanTermInYears">Loan term (in years): </label>
+          <input type="number" id="loanTermInYears" placeholder="Ex. 10 years" class="p-1 px-4 border flex-1" />
+        </div>
+
+        <div class="flex flex-row items-center p-2 gap-4">
+          <button type="submit" class=" p-2 px-4 flex-1 font-semibold text-white bg-indigo-700">Calculate</button>
+        </div>
+      </form>
+
+      <div class="p-4 m-4 shadow-sm border hidden" id="detailsPanel">
+        <h3 class="text-center font-semibold text-lg">Loan Details</h3>
+
+        <div class="p-2 flex flex-row items-center gap-4">
+          <p>Monthly Payments: </p>
+          <p class="flex-1 border p-2" id="monthlyPayments">10000</p>
+        </div>
+
+        <div class="p-2 flex flex-row items-center gap-4">
+          <p>Total Payment: </p>
+          <p class="flex-1 border p-2" id="totalPayment">10000</p>
+        </div>
+
+        <div class="p-2 flex flex-row items-center gap-4">
+          <p>Total Interest Paid: </p>
+          <p class="flex-1 border p-2" id="totalInterestPaid">10000</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function select(q) {
+      return document.querySelector(q);
+    }
+
+    const formLoanCalculatorElement = select("#formLoanCalculator");
+    const loanAmountElement = select("#loanAmount");
+    const annualInterestRateElement = select("#annualInterestRate");
+    const loanTermInYearsElement = select("#loanTermInYears");
+
+    const detailsPanelElement = select("#detailsPanel");
+    const monthlyPaymentsElement = select("#monthlyPayments");
+    const totalPaymentElement = select("#totalPayment");
+    const totalInterestPaidElement = select("#totalInterestPaid");
+
+    formLoanCalculatorElement.addEventListener("submit", (e) => {
+      e.preventDefault();
+      handleValueChange();
+    });
+    loanAmountElement.addEventListener("input", handleValueChange);
+    annualInterestRateElement.addEventListener("input", handleValueChange);
+    loanTermInYearsElement.addEventListener("input", handleValueChange);
+
+    function handleValueChange() {
+      const loanAmount = Number(loanAmountElement.value);
+      const annualInterestRate = Number(annualInterestRateElement.value);
+      const loanTermInYears = Number(loanTermInYearsElement.value);
+
+      console.log({
+        loanAmount, annualInterestRate,
+        loanTermInYears
+      })
+
+      const result = calculateLoanDetails(loanAmount, annualInterestRate, loanTermInYears);
+
+      if (Object.values(result).some(x => isNaN(x))) {
+        detailsPanel.classList.add("hidden");
+      } else {
+        monthlyPaymentsElement.innerText = result.monthlyPayment.toFixed(2);
+        totalPaymentElement.innerText = result.totalInterest.toFixed(2);
+        totalInterestPaidElement.innerText = result.totalInterest.toFixed(2);
+
+        detailsPanel.classList.remove("hidden");
+      }
+    }
+
+    /*
+    Create a Function called calculateLoanDetails and pass values like loan amount,
+    annual interest rate, loan term in years and calculate monthly payment (EMI),
+    Total Payment, Total Interest Paid.
+  
+    Amortization Formula: (M=P[i(1+i)^{n}]/[(1+i)^{n}-1]\)
+    Where:
+      M: Monthly Payment
+      P: Principal Loan Amount
+      i: Monthly Interest Rate (Annual interest rate / 12 / 100)
+      n: Total Number of Payments (Loan term in years * 12)
+    */
+
+    function amortization(P, i, n) {
+      return P * (i * (1 + i) ** n) / ((1 + i) ** n - 1);
+    }
+
+    function calculateTotalNumberOfPayments(years) {
+      return Math.ceil(years * 12);
+    }
+
+    function monthlyInterestRateFromAnnualInterestRate(i) {
+      return i / 12 / 100;
+    }
+
+    function calculateLoanDetails(loanAmount, annualInterestRate, loanTermInYears) {
+      const monthlyInterestRate = monthlyInterestRateFromAnnualInterestRate(annualInterestRate);
+
+      const totalNumberOfPayments = calculateTotalNumberOfPayments(loanTermInYears);
+
+      const monthlyPayment = amortization(loanAmount, monthlyInterestRate, totalNumberOfPayments);
+
+      const totalPayment = monthlyPayment * totalNumberOfPayments;
+
+      const totalInterest = totalPayment - loanAmount;
+
+      const data = {
+        monthlyPayment,
+        totalPayment,
+        totalInterest,
+      };
+
+      return data;
+    }
+
+    // const result = calculateLoanDetails(100000, 5, 30);
+    // console.log(result);
+
+  </script>
+</body>
+
+</html>

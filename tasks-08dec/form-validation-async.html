@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    function validation(rule, transform = x => x) {
+      return async (rawValue) => {
+        const value = transform(rawValue);
+
+        try {
+          const result = await rule(value);
+
+          if (result) {
+            return true;
+          } else {
+            throw new Error("Validation failed");
+          }
+        } catch (error) {
+          throw {
+            error: true,
+            message: error.message || "Validation failed",
+            data: error.data || null,
+          };
+        }
+      };
+    }
+
+    async function validate(data, rules) {
+      const errors = {};
+      let hasError = false;
+
+      for (const [field, validation] of Object.entries(rules)) {
+        try {
+          await validation(data[field]);
+        } catch (err) {
+          hasError = true;
+          errors[field] = err;
+        }
+      }
+
+      if (hasError) {
+        throw errors;
+      }
+
+      return data;
+    }
+
+    const trim = (value) => value.trim();
+
+    const rules = {
+      username: validation((value) => {
+        if (value.length < 5) {
+          throw new Error("Length must be at least 5");
+        }
+
+        return true;
+      }, trim),
+
+      email: validation((value) => {
+        if (!value.includes("@")) {
+          throw new Error("Must include @");
+        }
+
+        if (!value.includes(".")) {
+          throw new Error("Must include .");
+        }
+
+        return true;
+      }, trim)
+    };
+
+    async function main() {
+      const data = {
+        username: "janedoe",
+        email: "janedoe@mail.mail"
+      };
+
+      try {
+        const result = await validate(data, rules);
+        console.log("Data is valid!");
+      } catch (err) {
+        console.log("Validation error: ", err);
+      }
+    }
+
+    main();
+
+  </script>
+</body>
+
+</html>
