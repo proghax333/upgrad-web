@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function task1_division() {
+      function divide(a, b) {
+        if (b === 0) {
+          throw new Error("Cannot divide by 0.");
+        }
+
+        return a / b;
+      }
+
+      try {
+        console.log(`20 / 10 = ${divide(20, 10)}`);
+        console.log(`10 / 0 = ${divide(10, 0)}`);
+      } catch (e) {
+        console.error(e.message);
+      }
+
+    }
+
+    // task1_division();
+
+    function task2_replace_occurrences() {
+      function replaceJavaScriptWithJS(str) {
+        const firstOccurrence = /JavaScript/.exec(str).index;
+
+        const replaced = str.replace(/JavaScript/g, "JS");
+
+        return {
+          firstOccurrence,
+          replaced,
+        };
+      }
+
+      const str = "Hello, this is JavaScript. JavaScript is a multi-paradigm language.";
+      console.log("Original: ", str);
+
+      const { replaced, firstOccurrence } = replaceJavaScriptWithJS(str);
+
+      console.log("Replaced: ", replaced);
+    }
+
+    // task2_replace_occurrences();
+
+    function task3_dog_occurrences() {
+      function getAllOccurrences(str, pattern) {
+        pattern = new RegExp(pattern, "gi");
+
+        const result = str.match(pattern);
+        return result;
+      }
+
+      const str = "This is a DOG, this is another Dog. Oh, and an extra dog!";
+      const pattern = /dog/;
+
+      console.log("Dog occurrences: ", getAllOccurrences(str, pattern))
+    }
+
+    // task3_dog_occurrences();
+
+    function task3_only_alphanumeric() {
+
+      function validate(str) {
+        const pattern = /^[A-Za-z0-9]*$/;
+
+        return pattern.test(str);
+      }
+
+      console.log(`Is "1a2ABC21asC" alphanumeric?`, validate("1a2ABC21asC"));
+      console.log(`Is "A-1" alphanumeric?`, validate("A-1"));
+      console.log(`Is "ABC" alphanumeric?`, validate("ABC"));
+    }
+
+    // task3_only_alphanumeric();
+
+    function task4_getAllMatches() {
+
+      function getAllMatches(str, pattern) {
+        pattern = new RegExp(pattern);
+
+        const result = [];
+        let item;
+
+        while ((item = pattern.exec(str)) !== null) {
+          result.push(item);
+        }
+
+        return result;
+      }
+
+      const str = "Hello, Hiya, hello, hiya. There is goes, hello, HELLO!";
+      const pattern = /hello/gi;
+
+      const matches = getAllMatches(str, pattern);
+
+      console.log("Matches: ", matches);
+    }
+
+    // task4_getAllMatches();
+
+    function task5_validateLoginForm() {
+
+      function validateLoginForm({ username, password }) {
+        const usernamePattern = /^\w{5}\w*$/;
+        const passwordPattern = /^\w*(\w{0,7}[a-zA-Z]\w{0,7})(\w{0,7}[0-9]\w{0,7})\w*$/;
+
+        if (!usernamePattern.test(username)) {
+          throw new Error("Username must be at least 5 characters long.");
+        }
+
+        if (!passwordPattern.test(password)) {
+          throw new Error("Password must be at least 8 characters long, with a minimum of 1 letter and 1 number.");
+        }
+
+        return true;
+      }
+
+      try {
+        const data = {
+          username: "something1",
+          password: "password1"
+        }
+      } catch (e) {
+
+      }
+
+    }
+
+    function task6_fp_processNumbers() {
+      function processNumber(numbers, fns) {
+        return numbers.map(n =>
+          fns.reduce((a, v) => v(a), n)
+        );
+      }
+
+    }
+
+    function task7_odd_numbers() {
+
+      function filterOddNumbers(arr) {
+        return arr.filter(x => x % 2 === 1);
+      }
+
+      const nums = [1, 2, 3, 4, 5, 6];
+      console.log("All numbers: ", nums);
+      console.log("Odd numbers: ", filterOddNumbers(nums));
+    }
+
+    // task7_odd_numbers();
+
+    function task8_reducesum() {
+
+      function sum(arr) {
+        return arr.reduce((a, v) => a + v, 0);
+      }
+
+      const nums = [1, 2, 3, 4, 5, 6];
+      console.log("All numbers: ", nums);
+      console.log("Sum: ", sum(nums)); // 21
+    }
+
+    task8_reducesum();
+
+  </script>
+</body>
+
+</html>
