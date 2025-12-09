@@ -111,6 +111,8 @@
 
       function validateLoginForm({ username, password }) {
         const usernamePattern = /^\w{5}\w*$/;
+
+        // TODO: dummy placeholder pattern. TO BE IMPLEMENTED.
         const passwordPattern = /^\w*(\w{0,7}[a-zA-Z]\w{0,7})(\w{0,7}[0-9]\w{0,7})\w*$/;
 
         if (!usernamePattern.test(username)) {
