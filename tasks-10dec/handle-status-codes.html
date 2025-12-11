@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const API_BASE_URL = "https://jsonplaceholder.typicode.com";
+
+    async function main() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/todos`);
+        const data = await response.json();
+        const { status } = response;
+
+        if (status === 404) {
+          alert("Resource not found.");
+        } else if (status === 500) {
+          alert("Internal server error. Something went wrong on our end.");
+        } else if (status >= 200 && status < 300) { // could use `response.ok`
+          document.writeln(`<pre>${JSON.stringify(data, null, 2)}</pre>`)
+        }
+      } catch (e) {
+        alert("Error: ", e.message || "Something went wrong.");
+      }
+    }
+
+    main();
+  </script>
+</body>
+
+</html>

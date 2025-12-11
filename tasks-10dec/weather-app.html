@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <main>
+    <div class="max-w-lg mx-auto">
+      <form class="flex gap-2 p-2 items-center" id="weatherForm">
+        <input type="text" name="place" class="flex-1 p-2 px-4 rounded-md border"
+          placeholder="Enter location (ex. Pune)" />
+
+        <button class="p-2 px-4 bg-blue-800 text-white rounded-md">Search</button>
+      </form>
+
+      <!-- weather ui (only visible after a search) -->
+      <div id="weatherCard" class="hidden mt-6 bg-white shadow-lg rounded-xl p-6">
+        <h2 id="cityName" class="text-2xl font-semibold text-center"></h2>
+
+        <div class="flex flex-col items-center mt-4">
+          <img id="weatherIcon" class="w-20" />
+          <p id="weatherMain" class="text-xl font-medium"></p>
+          <p id="weatherDesc" class="text-gray-500 capitalize"></p>
+
+          <p id="temp" class="text-4xl font-bold mt-2"></p>
+          <p id="feelsLike" class="text-gray-600 text-sm"></p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mt-6 text-sm">
+          <div class="bg-gray-100 p-3 rounded-md">
+            <p class="font-medium">Humidity</p>
+            <p id="humidity"></p>
+          </div>
+
+          <div class="bg-gray-100 p-3 rounded-md">
+            <p class="font-medium">Pressure</p>
+            <p id="pressure"></p>
+          </div>
+
+          <div class="bg-gray-100 p-3 rounded-md">
+            <p class="font-medium">Wind</p>
+            <p id="wind"></p>
+          </div>
+
+          <div class="bg-gray-100 p-3 rounded-md">
+            <p class="font-medium">Visibility</p>
+            <p id="visibility"></p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mt-6 text-sm">
+          <div class="bg-blue-50 p-3 rounded-md text-center">
+            <p class="font-medium">Sunrise</p>
+            <p id="sunrise"></p>
+          </div>
+          <div class="bg-yellow-50 p-3 rounded-md text-center">
+            <p class="font-medium">Sunset</p>
+            <p id="sunset"></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <script>
+    const select = q => document.querySelector(q);
+    const API_KEY = "2a009ae6e1cc8563ce83bd3650985afb";
+
+    const weatherFormElement = select("#weatherForm");
+    const weatherCard = select("#weatherCard");
+
+    weatherFormElement.addEventListener("submit", handleSubmit);
+
+    function toC(tempK) {
+      return (tempK - 273.15).toFixed(1);
+    }
+
+    function toTime(timestamp, offset) {
+      return new Date((timestamp + offset) * 1000).toLocaleTimeString();
+    }
+
+    async function handleSubmit(e) {
+      e.preventDefault();
+
+      const formData = new FormData(weatherFormElement);
+      const { place } = Object.fromEntries(formData.entries());
+
+      try {
+        const res = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${API_KEY}`
+        );
+        const data = await res.json();
+
+        if (data.cod !== 200) {
+          alert("Location not found");
+          return;
+        }
+
+        updateUI(data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function updateUI(d) {
+      select("#cityName").innerText = `${d.name}, ${d.sys.country}`;
+      select("#weatherMain").innerText = d.weather[0].main;
+      select("#weatherDesc").innerText = d.weather[0].description;
+
+      select("#weatherIcon").src =
+        `https://openweathermap.org/img/wn/${d.weather[0].icon}@2x.png`;
+
+      select("#temp").innerText = toC(d.main.temp) + "°C";
+      select("#feelsLike").innerText = "Feels like: " + toC(d.main.feels_like) + "°C";
+
+      select("#humidity").innerText = d.main.humidity + "%";
+      select("#pressure").innerText = d.main.pressure + " hPa";
+      select("#wind").innerText = d.wind.speed + " m/s";
+      select("#visibility").innerText = d.visibility + " m";
+
+      select("#sunrise").innerText = toTime(d.sys.sunrise, d.timezone);
+      select("#sunset").innerText = toTime(d.sys.sunset, d.timezone);
+
+      weatherCard.classList.remove("hidden");
+    }
+  </script>
+</body>
+
+</html>

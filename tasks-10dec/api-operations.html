@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Update</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+  <main class="flex flex-col">
+    <div class="max-w-lg mx-auto w-full">
+      <form id="userUpdateForm" class="w-full p-6 mt-10 bg-white shadow-md rounded-md border">
+        <h2 class="text-center font-bold text-3xl mb-6">User Update</h2>
+
+        <div class="flex flex-col gap-2 mb-4">
+          <label for="name" class="font-semibold">Name</label>
+          <input type="text" name="name" id="name" placeholder="Ex. John Doe" class="p-2 px-4 border rounded-md" />
+        </div>
+
+        <div class="flex flex-col gap-2 mb-4">
+          <label for="username" class="font-semibold">Username</label>
+          <input type="text" name="username" id="username" placeholder="Ex. johndoe"
+            class="p-2 px-4 border rounded-md" />
+        </div>
+
+        <div class="flex flex-col gap-2 mb-4">
+          <label for="website" class="font-semibold">Website</label>
+          <input type="text" name="website" id="website" placeholder="Ex. johndoe.com"
+            class="p-2 px-4 border rounded-md" />
+        </div>
+
+        <button type="submit"
+          class="p-2 px-4 w-full font-semibold text-white bg-indigo-700 rounded-md hover:bg-indigo-800">
+          Update
+        </button>
+
+        <p id="statusMessage" class="text-center mt-4 font-medium"></p>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    const API_BASE_URL = "https://jsonplaceholder.typicode.com";
+    const select = q => document.querySelector(q);
+
+    const userUpdateFormElement = select("#userUpdateForm");
+    const statusMessage = select("#statusMessage");
+
+    let user = null;
+
+    async function loadInitialUserData() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/users/1`);
+        user = await response.json();
+
+        select("#name").value = user.name;
+        select("#username").value = user.username;
+        select("#website").value = user.website;
+
+      } catch (error) {
+        statusMessage.textContent = "Failed to load user data.";
+        statusMessage.classList.add("text-red-600");
+      }
+    }
+
+    async function handleSubmit(e) {
+      e.preventDefault();
+
+      const formData = new FormData(userUpdateFormElement);
+      const updatedData = Object.fromEntries(formData.entries());
+      const newData = { ...user, ...updatedData };
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/users/1`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newData)
+        });
+
+        const result = await response.json();
+
+        statusMessage.textContent = "User updated successfully!";
+        statusMessage.className = "text-green-600 text-center mt-4 font-semibold";
+
+        console.log("Updated user:", result);
+
+      } catch (error) {
+        statusMessage.textContent = "Update failed!";
+        statusMessage.className = "text-red-600 text-center mt-4 font-semibold";
+      }
+    }
+
+    async function deleteRequest() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/posts/1`, { method: "DELETE" });
+        const result = await response.json();
+        console.log("Deleted post successfully.", result);
+      } catch (e) {
+        console.error("Delete request failed:", e);
+      }
+    }
+
+    // Initialize
+    loadInitialUserData();
+
+    userUpdateFormElement.addEventListener("submit", handleSubmit);
+  </script>
+</body>
+
+</html>
