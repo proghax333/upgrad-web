@@ -31,6 +31,8 @@
     header {
       display: flex;
       gap: 0.5rem;
+
+      border-bottom: solid 1px #ccc;
     }
 
     nav {
@@ -41,7 +43,6 @@
     nav>ul {
       display: flex;
       gap: 0rem;
-      border-bottom: solid 1px #ccc;
       width: 100%;
     }
 
@@ -99,9 +100,19 @@
     .top-menu>button {
       background: none;
       border: none;
+
+      display: none;
     }
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 570px) {
+      #nav.hidden {
+        display: none;
+      }
+
+      .top-menu>button {
+        display: block
+      }
+
       header {
         display: flex;
         flex-direction: column;
@@ -111,18 +122,34 @@
         display: flex;
         flex-direction: column;
       }
+
+      a+div {
+        position: static;
+      }
     }
   </style>
+
+  <script>
+    function toggleNav() {
+      const nav = document.querySelector("#nav");
+
+      if (nav.classList.contains("hidden")) {
+        nav.classList.remove("hidden");
+      } else {
+        nav.classList.add("hidden");
+      }
+    }
+  </script>
 </head>
 
 <body>
   <header>
-    <!-- <div class="top-menu">
-      <p>Text</p>
-      <button><img src="./burger-menu.svg" width="32"></button>
-    </div> -->
+    <div class="top-menu">
+      <p>Logo</p>
+      <button onclick="toggleNav()"><img src="./burger-menu.svg" width="32"></button>
+    </div>
 
-    <nav>
+    <nav id="nav" class="hidden">
       <ul>
         <li>
           <a href="#">Home</a>
@@ -136,12 +163,28 @@
         </li>
         <li>
           <a href="#">Student's Corner</a>
+
+          <div>
+            <ul>
+              <li><a href="#">Test 1</a></li>
+              <li><a href="#">Test 2</a></li>
+              <li><a href="#">Test 3</a></li>
+            </ul>
+          </div>
         </li>
         <li>
           <a href="#">Academics</a>
         </li>
         <li>
           <a href="#">Library</a>
+
+          <div>
+            <ul>
+              <li><a href="#">Test 1</a></li>
+              <li><a href="#">Test 2</a></li>
+              <li><a href="#">Test 3</a></li>
+            </ul>
+          </div>
         </li>
         <li>
           <a href="#">About</a>
