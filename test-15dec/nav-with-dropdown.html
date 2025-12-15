@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    header {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    nav {
+      display: flex;
+      width: 100%;
+    }
+
+    nav>ul {
+      display: flex;
+      gap: 0rem;
+      border-bottom: solid 1px #ccc;
+      width: 100%;
+    }
+
+    nav>ul>li {
+      padding: 1rem 1.5rem;
+      border-right: solid 1px #ccc;
+      position: relative;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    a+div {
+      display: none;
+
+      position: absolute;
+      top: 100%;
+      left: 0;
+
+      min-width: 12rem;
+      border: 1px solid #ccc;
+    }
+
+    a+div>ul {
+      display: flex;
+      flex-direction: column;
+    }
+
+    a+div>ul li {
+      padding: 1rem 1.5rem;
+      border-bottom: solid 1px #ccc;
+    }
+
+    a:focus+div {
+      display: block;
+    }
+
+    a+div:hover {
+      display: block;
+    }
+
+    a+div:has(*:focus) {
+      display: block;
+    }
+
+    header .top-menu {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 1.5rem;
+      align-items: center;
+    }
+
+    .top-menu>button {
+      background: none;
+      border: none;
+    }
+
+    @media screen and (max-width: 480px) {
+      header {
+        display: flex;
+        flex-direction: column;
+      }
+
+      nav>ul {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <!-- <div class="top-menu">
+      <p>Text</p>
+      <button><img src="./burger-menu.svg" width="32"></button>
+    </div> -->
+
+    <nav>
+      <ul>
+        <li>
+          <a href="#">Home</a>
+          <div>
+            <ul>
+              <li><a href="#">Test 1</a></li>
+              <li><a href="#">Test 2</a></li>
+              <li><a href="#">Test 3</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="#">Student's Corner</a>
+        </li>
+        <li>
+          <a href="#">Academics</a>
+        </li>
+        <li>
+          <a href="#">Library</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</body>
+
+</html>

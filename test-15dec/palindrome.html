@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function isPalindrome(str) {
+      const n = str.length;
+
+      if (n <= 1) {
+        return true;
+      }
+
+      const limit = Math.floor(n / 2);
+
+      for (let i = 0; i < limit; ++i) {
+        if (str[i] !== str[n - i - 1]) {
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+    console.log(isPalindrome("abcba"));
+    console.log(isPalindrome("abba"));
+    console.log(isPalindrome("a"));
+    console.log(isPalindrome("abcd"));
+  </script>
+</body>
+
+</html>

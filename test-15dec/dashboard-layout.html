@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    html,
+    body,
+    #root {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    #root {
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      width: 100%;
+      min-height: 4rem;
+      background: orange;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #root>div {
+      flex: 1;
+
+      display: flex;
+    }
+
+    aside {
+      min-width: 8rem;
+      background: greenyellow;
+      display: none;
+    }
+
+    main {
+      flex: 1;
+
+      display: grid;
+      place-items: center;
+
+      overflow-y: auto;
+    }
+
+    footer {
+      min-height: 4rem;
+      background: darkred;
+      color: white;
+
+      display: grid;
+      place-items: center;
+    }
+
+    @media screen and (min-width: 560px) {
+      aside {
+        display: grid;
+        place-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <header>Header</header>
+
+    <div>
+      <aside>Sidebar</aside>
+      <main>Main</main>
+      <aside>Right Sidebar</aside>
+    </div>
+
+    <footer>Footer</footer>
+  </div>
+</body>
+
+</html>
