@@ -1,6 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaBackward, FaForward, FaPause, FaPlay, FaStop } from "react-icons/fa";
+import {
+  FaArrowLeft,
+  FaBackward,
+  FaForward,
+  FaPause,
+  FaPlay,
+  FaStop,
+} from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
+import { useNavigate, useParams } from "react-router";
 
 function MusicPlayer() {
   const [playerState, setPlayerState] = useState({
@@ -8,7 +16,13 @@ function MusicPlayer() {
     state: "paused",
   });
 
+  const navigate = useNavigate();
+
   const timerRef = useRef(null);
+
+  let { musicId } = useParams();
+  // if there's no musicId, set a default value
+  musicId ??= 0; // musicId = musicId ?? 0;
 
   useEffect(() => {
     if (playerState.state !== "playing") return;
@@ -43,6 +57,12 @@ function MusicPlayer() {
   return (
     <div className="w-full flex flex-col">
       <div className="w-full max-w-md mx-auto border border-gray-300 rounded-md my-4">
+        <button
+          onClick={() => navigate(-1)}
+          className="w-min block mt-4 mx-4 p-3 border border-gray-200 rounded-sm"
+        >
+          <FaArrowLeft />
+        </button>
         <div className="flex flex-col">
           <div className="flex justify-center py-8">
             <div className="w-32 h-32 rounded-full shadow-lg bg-black grid place-items-center">
@@ -53,7 +73,7 @@ function MusicPlayer() {
           <hr className="border-gray-300" />
 
           <div className="py-4">
-            <h3 className="px-4">Let Me Love You</h3>
+            <h3 className="px-4">Song {musicId}</h3>
             <h5 className="px-4 text-sm text-gray-700">
               Justin Bieber, DJ Snake
             </h5>
